@@ -4,10 +4,12 @@
   "private": true,
   "description": "Smart E-Commerce Search and Recommendation System using Advanced DSA",
   "scripts": {
-    "install:all": "npm install --prefix backend && npm install --prefix frontend",
-    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "install:all": "npm install && npm install --prefix frontend",
+    "backend:build": "make -C backend",
+    "backend:start": "make -C backend run",
+    "dev": "concurrently \"npm run backend:start\" \"npm run dev --prefix frontend\"",
     "build": "npm run build --prefix frontend",
-    "start": "npm run start --prefix backend"
+    "start": "npm run backend:start"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

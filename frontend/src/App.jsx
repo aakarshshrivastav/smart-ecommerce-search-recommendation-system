@@ -108,8 +108,8 @@ function App() {
         </nav>
 
         <div className="mx-auto grid max-w-7xl items-center gap-10 py-12 lg:grid-cols-[1fr_0.92fr] lg:py-20">
-          <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-lg border border-teal-100 bg-white/55 px-3 py-2 text-sm font-semibold text-teal-800 shadow-sm backdrop-blur-xl">
+          <div className="animate-rise">
+            <div className="mb-5 inline-flex animate-float items-center gap-2 rounded-lg border border-teal-100 bg-white/55 px-3 py-2 text-sm font-semibold text-teal-800 shadow-sm backdrop-blur-xl">
               <Sparkles size={16} /> Advanced DSA in a real commerce flow
             </div>
             <h1 className="max-w-4xl text-5xl font-black leading-[1.02] text-slate-950 sm:text-6xl lg:text-7xl">
@@ -135,7 +135,9 @@ function App() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-white/70 bg-white/42 p-4 shadow-2xl shadow-slate-900/10 backdrop-blur-2xl">
+          <div className="relative rounded-lg border border-white/70 bg-white/42 p-4 shadow-2xl shadow-slate-900/10 backdrop-blur-2xl animate-rise-delayed">
+            <div className="pointer-events-none absolute -left-10 top-10 hidden h-52 w-52 rounded-full border border-teal-300/30 lg:block animate-orbit" />
+            <div className="pointer-events-none absolute -right-8 bottom-20 hidden h-28 w-28 rounded-full border border-sky-300/40 lg:block animate-orbit-reverse" />
             <div className="rounded-lg bg-slate-950 p-4 text-white">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-semibold text-teal-200">Live autocomplete</p>
@@ -155,6 +157,15 @@ function App() {
               {suggestions.slice(0, 4).map((product) => (
                 <ProductRow key={product.id} product={product} onSelect={setSelectedId} />
               ))}
+            </div>
+            <div className="mt-5 overflow-hidden rounded-lg border border-slate-200/70 bg-white/60 p-3">
+              <div className="data-stream flex min-w-max items-center gap-3 text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                {['Trie prefix match', 'C++ API', 'Heap rank', 'Graph walk', 'Fenwick bucket scan', 'Hash map lookup'].map((label) => (
+                  <span key={label} className="rounded-md bg-slate-950 px-3 py-2 text-teal-200">
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -266,7 +277,7 @@ function ProductCard({ product, onSelect, compact = false }) {
   return (
     <button
       onClick={() => onSelect(product.id)}
-      className="group overflow-hidden rounded-lg border border-white/70 bg-white/70 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"
+      className="group overflow-hidden rounded-lg border border-white/70 bg-white/70 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-teal-900/10"
     >
       <img src={product.image} alt={product.name} className={`w-full object-cover ${compact ? 'h-28' : 'h-36'}`} />
       <div className="p-4">

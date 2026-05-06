@@ -14,13 +14,14 @@ A full-stack project demonstrating advanced data structures in a practical e-com
 
 - React + Vite
 - Tailwind CSS
-- Express.js
-- JavaScript DSA modules
+- C++17 backend
+- Dependency-free POSIX socket HTTP API
 
 ## Run Locally
 
 ```bash
 npm run install:all
+npm run backend:build
 npm run dev
 ```
 
